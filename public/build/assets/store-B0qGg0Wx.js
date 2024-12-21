@@ -1,0 +1,1 @@
+import{d as n,r as e}from"./pinia-CXLHYllx.js";n("panier",()=>{let t=e([]),i=e([]),l=e(0),r=e(0);async function s(){let a=await axios.get("/panier/tous-les-paniers");t.value=a.data.paniersList,i.value=a.data.villes,l.value=a.data.quantiteTotal,r.value=a.data.prixTotal}return{paniersList:t,villes:i,prixTotal:r,quantiteTotal:l,getPanier:s}});
