@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('users_id')->constrained();
             $table->foreignId('products_id')->constrained();
-            $table->boolean('est_favori');
+            $table->boolean('is_favorite')->default(false);
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();

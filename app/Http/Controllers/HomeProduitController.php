@@ -12,7 +12,7 @@ class HomeProduitController extends Controller
 {
 
     public function home(){
-        return view('product.home',[
+        return view('base',[
             'bestMangas'=>Product::where('categories_id',1)
                                   ->orderByDesc('note')
                                   ->orderByDesc('nb_vote')

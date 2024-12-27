@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Panier extends Model
+class Cart extends Model
 {
     use HasFactory;
     protected $guarded = [];
     public function product(){
         return $this->belongsTo(Product::class);
     }
-    public function ville(){
-        return $this->belongsTo(Ville::class);
+    public function city(){
+        return $this->belongsTo(City::class);
     }
 }

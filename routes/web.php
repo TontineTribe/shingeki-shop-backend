@@ -21,7 +21,7 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Route::get('/inscription',[AuthController::class,'login'])->name('inscription');
+Route::get('/inscription',[AuthController::class,'login'])->name('inscription');
 
 // Route::view('/notAuthorize','admin.notAuthorize')->name('notAuthorize');
 

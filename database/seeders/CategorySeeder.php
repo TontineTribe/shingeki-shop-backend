@@ -2,20 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\Ville;
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class VilleSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-      $villes = ['Dscang,Cameroun','Bafoussam,Cameroun','Yaounde,Cameroun','Douala,Cameroun','Bertoua,Cameroun'];
-      foreach ($villes as $key => $value) {
-        Ville::factory()->create([
+      $categories = ["Mangas","Figurines","Habits","Accessoires","Sons","Jeux Videos"];
+      foreach ($categories as $key => $value) {
+        Category::factory()->create([
             "name"=> $value
         ]);
     }

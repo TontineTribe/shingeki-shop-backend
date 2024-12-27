@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Ville;
+use App\Models\City;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             "password"=> Hash::make($user[3]),
             // "nametitan"=>$user[4],
             // "image" => $user[4],
-            "ville_id" => Ville::all()->random()->id
+            "city_id" => City::all()->random()->id
         ]);
   }
     }

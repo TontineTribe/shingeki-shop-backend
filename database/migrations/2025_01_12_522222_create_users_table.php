@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\city;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('villes', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(city::class)->constrained();
+            // $table->string('image');
             $table->string('name');
+            $table->string('phone');
+            $table->string('email')->unique();
+            $table->string('password');
+            // $table->string('nametitan');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -23,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('villes');
+        Schema::dropIfExists('users');
     }
 };
