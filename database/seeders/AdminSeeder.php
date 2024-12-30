@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
           ['LONKENG grace','Agito no Kyojin','lonkenggrace@gmail.com','/images/admin/grace.jpg','33333333'],
           ['ZEBAZE julie','Sentsui no Kyojin','zebazejulie6@gmail.com','/images/admin/julie.jpg','44444444'],
           ['SOH TALOTSING DUCLAIR','Chō-ōgata Kyojin','sohduclair1@gmail.com','/images/admin/duclair.jpg','55555555'],
-          ['MENGUE ONDOUA Kerane','Shiso no Kyojin','keraneondoua@gmail.com','/images/admin/kerane.jpg','66666666'],
+          ['MENGUE ONDOUA Kerane','Shiso no Kyojin','keraneondoua14@gmail.com','/images/admin/kerane.jpg','66666666'],
           ['NGANSOP Martial','Kemono no Kyojin','martialngansop4@gmail.com','/images/admin/martial.jpg','77777777'],
           ['PELAP AMELIE-LAURE','Shariki no Kyojin','pelapamelie@gmail.com','/images/admin/amelie.jpg','88888888'],
           ['WAKAM Yann','Boranto no kyojin','wakamyann@gmail.com','/images/admin/yann.jpg','99999999'],

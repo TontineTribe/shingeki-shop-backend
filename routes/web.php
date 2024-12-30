@@ -1,14 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\FactureController;
-use App\Http\Controllers\HelpController;
-use App\Http\Controllers\PanierController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HomeProductController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ArticleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
