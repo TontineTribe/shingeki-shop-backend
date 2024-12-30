@@ -12,6 +12,9 @@ class Article extends Model
 
     protected $guarded = [];
 
+    public function admin(){
+      return $this->BelongsTo(Admin::class);
+    }
     public function getSlug():string{
         return Str::slug($this->name);
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ArticleFormRequest;
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
@@ -14,19 +15,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('admin.articles.index',[
-            'articles'=>Article::orderByDesc('created_at')->paginate(8),
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('admin.articles.form',[
-            'article' => new Article(),
-        ]);
+      return response()->json([
+        'status' => 200,
+        'message' => 'success to get all article', 
+        'articles'=>Article::where('admins_id',Auth::user()->id)->get(),
+      ],200);
     }
 
     /**
@@ -34,21 +27,17 @@ class ArticleController extends Controller
      */
     public function store(ArticleFormRequest $request)
     {
+        $request->validate(['image' => 'required']);
         $data = $request->validated();
-        $image = $request->validated('imagearticle');
-        $data['imagearticle'] = $image->store('article','public');
+        $image = $request->validated('image');
+        $data['image'] = $image->store('article','public');
+        $data['admins_id'] = Auth::user()->id;
         $article = Article::create($data);
-        return to_route('admin.article.index')->with('success','le bien a ete cree');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Article $article)
-    {
-        return view('admin.articles.form',[
-            'article' => $article,
-    ]);
+        return response()->json([
+          'status' => 200,
+          'message' => 'success to create article', 
+          'products'=>$article,
+        ],200);
     }
 
     /**
@@ -57,20 +46,30 @@ class ArticleController extends Controller
     public function update(ArticleFormRequest $request, Article $article)
     {
         $data = $request->validated();
-        $image = $request->validated('imagearticle');
-        $data['imagearticle'] = $image->store('article','public');
-        // Storage::disk('public')->delete($article->image);
+        $image = $request->validated('image');
+        if(isset($image)){
+          $data['image'] = $image->store('article','public');
+          Storage::disk('public')->delete($article->image);
+        }
+        
         $article->update($data);
-        return to_route('admin.article.index')->with('success','le bien a ete mis a jour');
-    }
+        return response()->json([
+          'status' => 200,
+          'message' => 'success to update article', 
+          'products'=>$article,
+        ],200);    
+      }
     
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Article $article)
     {
-        // Storage::disk('public')->delete($article->image);
-        $article->delete();
-        return to_route('admin.article.index')->with('success','le bien a ete supprimer');
+      Storage::disk('public')->delete($article->image);
+      $article->delete();
+      return response()->json([
+        'status' => 200,
+        'message' => 'success to delete article', 
+      ],200); 
     }
 }

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('image_article');
-            $table->string('name_article');
-            $table->text('description_article');
+            $table->foreignId('admins_id')->constrained();
+            $table->string('image');
+            $table->string('name');
+            $table->text('description');
             $table->timestamps();
         });
     }

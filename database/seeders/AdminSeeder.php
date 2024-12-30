@@ -16,11 +16,16 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         $admin = [
-          ['Marcel J. DJIOFACK','Shingeki no Kyojin','djiofackjason57@gmail.com','marcel.jpg','1234'],
-          ['Bouonou cicero','Kō no Kyojin','bounoucicero@gmail.com','cicero.jpg','1111'],
-          ['CHOUNA Lucresse','Onna-gata no Kyojin','lucressechouna640@gmail.com','lucresse.jpg','2222'],
-          ['LONKENG grace','Agito no Kyojin','lonkenggrace@gmail.com','grace.jpg','3333'],
-          ['ZEBAZE julie','Sentsui no Kyojin','zebazejulie6@gmail.com','julie.jpg','4444']
+          ['Marcel J. DJIOFACK','Shingeki no Kyojin','marceldjiofack@outlook.com','/images/admin/marcel.jpg','12345678'],
+          ['Bouonou cicero','Kō no Kyojin','bounoucicero@gmail.com','/images/admin/cicero.jpg','11111111'],
+          ['CHOUNA Lucresse','Onna-gata no Kyojin','lucressechouna640@gmail.com','/images/admin/lucresse.jpg','22222222'],
+          ['LONKENG grace','Agito no Kyojin','lonkenggrace@gmail.com','/images/admin/grace.jpg','33333333'],
+          ['ZEBAZE julie','Sentsui no Kyojin','zebazejulie6@gmail.com','/images/admin/julie.jpg','44444444'],
+          ['SOH TALOTSING DUCLAIR','Chō-ōgata Kyojin','sohduclair1@gmail.com','/images/admin/duclair.jpg','55555555'],
+          ['MENGUE ONDOUA Kerane','Shiso no Kyojin','keraneondoua@gmail.com','/images/admin/kerane.jpg','66666666'],
+          ['NGANSOP Martial','Kemono no Kyojin','martialngansop4@gmail.com','/images/admin/martial.jpg','77777777'],
+          ['PELAP AMELIE-LAURE','Shariki no Kyojin','pelapamelie@gmail.com','/images/admin/amelie.jpg','88888888'],
+          ['WAKAM Yann','Boranto no kyojin','wakamyann@gmail.com','/images/admin/yann.jpg','99999999'],
       ];
 
       foreach ($admin as $key => $super_user) {

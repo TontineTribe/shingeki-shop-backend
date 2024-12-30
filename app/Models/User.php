@@ -18,17 +18,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $guarded = [];
-    function user_note(){
+    private function user_note(){
         return $this->belongsToMany(User_Note::class);
     }
-    function product_favori(){
+    private function product_favori(){
         return $this->belongsToMany(Product_favori::class);
     }
-    function panier(){
-        return $this->belongsToMany(panier::class);
+    private function cart(){
+        return $this->belongsToMany(Cart::class);
     }
-    function ville(){
-        return $this->belongsTo(Ville::class);
+    private function city(){
+        return $this->belongsTo(City::class);
     }
 
     /**

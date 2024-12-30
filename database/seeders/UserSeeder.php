@@ -17,11 +17,11 @@ class UserSeeder extends Seeder
     public function run(): void
     {
       $users = [
-        ['user1','697815095','djiofackjason57@gmail.com','1234'],
-        ['user2','89898989','bounoucicero@gmail.com','1111'],
-        ['user3','89898989','lucressechouna640@gmail.com','2222'],
-        ['user4','89898989','lonkenggrace@gmail.com','3333'],
-        ['user5','89898989','zebazejulie6@gmail.com','4444']
+        ['user1','697815095','user1@gmail.com','11111111'],
+        ['user2','89898989','user2@gmail.com','22222222'],
+        ['user3','89898989','user30@gmail.com','33333333'],
+        ['user4','89898989','user4@gmail.com','44444444'],
+        ['user5','89898989','user5@gmail.com','55555555']
       ];
 
       foreach ($users as $key => $user) {

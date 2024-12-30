@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -126,6 +127,7 @@ class ProductFactory extends Factory
                                             ]),
             "nb_vote" => fake()->numberBetween(30,1500),
             "note" => fake()->numberBetween(0,5),
+            "admins_id" => Admin::all()->random()->id
         ];
     }
 }

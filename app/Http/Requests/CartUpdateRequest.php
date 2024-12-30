@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\admin;
+namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ProductFormRequest extends FormRequest
+class CartUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,20 +25,15 @@ class ProductFormRequest extends FormRequest
       throw new HttpResponseException(response()->json([
         'success' => false,
         'status' => 422,
-        'message' => 'Creating or updating a new product failed',
+        'message' => 'Register validation failed',
         'errors' => $validator->errors(),
       ],422));
     }
-
     public function rules(): array
     {
         return [
-            'name'=>['required','min:8','unique:products,name'],
-            'image'=>['image'],
-            'description'=>['required','min:20'],
-            'price'=> ['required','integer','min:0'],
-            'categories_id' => 'required|exists:categories,id',
-        ];
+              'quantity'=>'required|min:1|integer',
+              'city_id'=>'required|exists:cities,id',
+            ];
     }
-
 }

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Facture extends Model
+class Bill extends Model
 {
     use HasFactory;
 
-    public function panier(){
-      return $this->belongsTo(Panier::class);
+    public function cart(){
+      return $this->belongsTo(Cart::class);
     }
 }

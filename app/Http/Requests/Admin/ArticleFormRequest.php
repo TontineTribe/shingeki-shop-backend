@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\admin;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ArticleFormRequest extends FormRequest
 {
@@ -22,19 +24,19 @@ class ArticleFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'namearticle'=>['required','min:8'],
-            'imagearticle'=>['required','image'],
-            'descriptionarticle'=>['required','min:20'],
+            'name'=>['required','min:8','unique:articles,name'],
+            'image'=>['image'],
+            'description'=>['required','min:20'],
         ];
     }
 
-    public function messages(){
-        return[
-            "namearticle.required" => "Veuillez entrer votre nom complet",
-            "namearticle.min" => "Veuillez entrer votre nom d'article de minimun 8 caracteres",
-            "imagearticle.required" => "Veuillez entrer l'image de l'article",
-            "decriptionarticle.required" => "Veuillez entrer votre mot de passe",
-            "decriptionarticle.min" => "Veuillez entrer une decription d'article de minimun 20 caracteres",
-        ];
+    public function failedValidation(Validator $validator){
+      throw new HttpResponseException(response()->json([
+        'success' => false,
+        'status' => 422,
+        'message' => 'Creating or updating a new article failed',
+        'errors' => $validator->errors(),
+      ],422));
     }
+
 }

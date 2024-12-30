@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductFormRequest;
-use App\Models\Categorie;
+use App\Models\Category;
 use App\Models\Product;
+use Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\SearchProductRequest;
 
@@ -14,28 +15,13 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(SearchProductRequest $request)
+    public function index()
     {
-        $query = Product::query();
-        if($request->has('searchValue')){
-            $query = $query->where('name', 'like' ,"%{$request->input('searchValue')}%");
-        }
-        return view('admin.products.index',[
-            'products'=>$query->orderByDesc('created_at')->paginate(9),
-            'categories'=>Categorie::all(),
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $product =new Product();
-        return view('admin.products.form',[
-            'product' => $product,
-            'categories' => Categorie::all()
-        ]);
+      return response()->json([
+        'status' => 200,
+        'message' => 'success to get all products', 
+        'products'=>Product::where('admins_id',Auth::user()->id)->get(),
+      ],200);
     }
 
     /**
@@ -46,21 +32,15 @@ class ProductController extends Controller
         $request->validate(['image' => 'required']);
         $data = $request->validated();
         $image = $request->validated('image');
+        $data['admins_id'] = Auth::user()->id;
         $data['image'] = $image->store('product','public');
         $product = Product::create($data);
-        return to_route('admin.product.index')->with('success','le produit a ete cree');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        return view('admin.products.form',[
-            'product' => $product,
-            'categories' => Categorie::all()
-    ]);
-    }
+        return response()->json([
+          'status' => 200,
+          'message' => 'success to create product', 
+          'products'=>$product,
+        ],200);    
+      }
 
     /**
      * Update the specified resource in storage.
@@ -76,8 +56,12 @@ class ProductController extends Controller
         }
         
         $product->update($data);
-        return to_route('admin.product.index')->with('success','le produit a ete mis a jour');
-    }
+        return response()->json([
+          'status' => 200,
+          'message' => 'success to update product', 
+          'products'=>$product,
+        ],200);    
+      }
     
     /**
      * Remove the specified resource from storage.
@@ -86,8 +70,9 @@ class ProductController extends Controller
     {
         Storage::disk('public')->delete($product->image);
         $product->delete();
-        // return to_route('admin.product.index')->with('success','le produit a ete supprimer');
-        session()->flash('success','le produit a ete supprimer');
-        return response()->json();
-    }
+        return response()->json([
+          'status' => 200,
+          'message' => 'success to delete product', 
+        ],200);    
+      }
 }

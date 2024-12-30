@@ -12,7 +12,10 @@ class Product extends Model
     use HasFactory;
     protected $guarded = [];
     function category(){
-        return $this->belongsTo(Categorie::class);
+        return $this->belongsTo(Category::class);
+    }
+    function  admin(){
+        return $this->belongsTo(Admin::class);
     }
     function user_note(){
         return $this->belongsToMany(User_Note::class);
