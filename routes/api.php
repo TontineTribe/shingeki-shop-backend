@@ -25,13 +25,6 @@ use App\Http\Controllers\UserController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-//! redirect after fail to pass in protected routes
-Route::get('/login',function () {
-  return response()->json([
-    "status"=>401,
-    'message'=>'This route is protected by authentication'
-  ],401);
-})->name('login');
 
 //? public routes
   // simple user register
@@ -73,7 +66,7 @@ Route::get('/login',function () {
     Route::post('/cart/{product}',[CartController::class,'store']);
     Route::put('/cart/{cart}',[CartController::class,'update']);
     Route::delete('/cart/{cart}',[CartController::class,'destroy']);
-    Route::delete('/cart/destroy-all',[CartController::class,'destroyAll']);
+    Route::delete('/cart/destroy/all',[CartController::class,'destroyAll']);
 
     // create bill
     Route::get('/bill',[BillController::class,'create']);
@@ -95,3 +88,4 @@ Route::get('/login',function () {
       Route::resource('/article',ArticleController::class)->except(['show','create','edit']);
     });
   });
+

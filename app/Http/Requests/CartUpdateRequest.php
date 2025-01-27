@@ -21,14 +21,14 @@ class CartUpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function failedValidation(Validator $validator){
-      throw new HttpResponseException(response()->json([
-        'success' => false,
-        'status' => 422,
-        'message' => 'Register validation failed',
-        'errors' => $validator->errors(),
-      ],422));
-    }
+    // public function failedValidation(Validator $validator){
+    //   throw new HttpResponseException(response()->json([
+    //     'success' => false,
+    //     'status' => 422,
+    //     'message' => 'Register validation failed',
+    //     'errors' => $validator->errors(),
+    //   ],422));
+    // }
     public function rules(): array
     {
         return [

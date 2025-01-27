@@ -83,7 +83,7 @@ class CartController extends Controller
       }
 
       public function destroyAll(){
-        Cart::query()->delete();
+        Cart::query()->where('user_id',Auth::user()->id)->delete();
         return response()->json([
           'status' => 200,
           'message' => 'all products have been removed from the cart',

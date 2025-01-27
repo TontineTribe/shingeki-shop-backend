@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = [
+        $admins = [
           ['Marcel J. DJIOFACK','Shingeki no Kyojin','marceldjiofack@outlook.com','/images/admin/marcel.jpg','12345678'],
           ['Bouonou cicero','Kō no Kyojin','bounoucicero@gmail.com','/images/admin/cicero.jpg','11111111'],
           ['CHOUNA Lucresse','Onna-gata no Kyojin','lucressechouna640@gmail.com','/images/admin/lucresse.jpg','22222222'],
@@ -25,16 +25,16 @@ class AdminSeeder extends Seeder
           ['MENGUE ONDOUA Kerane','Shiso no Kyojin','keraneondoua14@gmail.com','/images/admin/kerane.jpg','66666666'],
           ['NGANSOP Martial','Kemono no Kyojin','martialngansop4@gmail.com','/images/admin/martial.jpg','77777777'],
           ['PELAP AMELIE-LAURE','Shariki no Kyojin','pelapamelie@gmail.com','/images/admin/amelie.jpg','88888888'],
-          ['WAKAM Yann','Boranto no kyojin','wakamyann@gmail.com','/images/admin/yann.jpg','99999999'],
+          ['WAKAM Yann','Boranto no kyojin','wakamkyannb04@gmail.com','/images/admin/yann.jpg','99999999'],
       ];
 
-      foreach ($admin as $key => $super_user) {
+      foreach ($admins as $key => $admin) {
         Admin::factory()->create([
-            "name"=>$super_user[0],
-            "nametitan"=>$super_user[1],
-            "email"=>$super_user[2],
-            "image"=>$super_user[3],
-            "password"=> Hash::make($super_user[4])
+            "name"=>$admin[0],
+            "nametitan"=>$admin[1],
+            "email"=>$admin[2],
+            "image"=>$admin[3],
+            "password"=> Hash::make($admin[4])
         ]);
     }
     }

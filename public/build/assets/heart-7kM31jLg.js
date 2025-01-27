@@ -1,1 +1,0 @@
-const t=document.getElementById("checkbox"),e=document.getElementById("fa-heart");console.log(t);e.addEventListener("click",()=>{t.checked?e.style.animationName="pulse":(e.style.color="white",e.style.animationName="initial")});
